@@ -1,0 +1,43 @@
+# Awareness simulator configuration.
+# This file is intentionally verbose to document each option.
+
+# Safety switch to prevent accidental sends.
+# You must set this to true AND pass the CLI --confirm phrase to send.
+allow_live_send: true
+
+# If true, the tool will only validate and print a plan, never send.
+# You can still override this with the CLI --dry-run flag.
+dry_run: false
+
+# Where your Gophish server is running.
+# Example: http://localhost:3333
+base_url: "${GOPHISH_BASE_URL}"
+
+# API key for your Gophish admin user.
+api_key: "${GOPHISH_API_KEY}"
+
+# TLS certificate verification. Set false only if using self-signed certs.
+verify_tls: false
+
+# Campaign defaults. These refer to resources already created in Gophish.
+campaign:
+  name: "Quarterly Awareness Simulation"
+  # Use an existing group name in Gophish (recipients list).
+  group_name: "Google"
+  # Use an existing email template name in Gophish.
+  template_name: "Email"
+  # Use an existing landing page name in Gophish.
+  page_name: "Google"
+  # Use an existing sending profile name in Gophish.
+  sending_profile_name: "Gophish"
+  # The URL recipients will see in links (should point to your Gophish server).
+  url: "https://campaign-test.com"
+  # Optional: schedule the campaign. Use ISO 8601, e.g. 2026-02-15T09:00:00Z
+  launch_date: null
+
+# Reporting defaults.
+reporting:
+  # If true, only unique clicks are counted in click rate.
+  unique_clicks_only: true
+  # If true, only unique opens are counted in open rate.
+  unique_opens_only: true
